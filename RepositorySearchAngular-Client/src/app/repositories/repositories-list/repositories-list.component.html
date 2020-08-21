@@ -1,0 +1,30 @@
+<div class="container">
+    <label>Repository Name: </label>
+    <input type="text" class="form-control" style="max-width: 200px;" [(ngModel)] = "searchRep">
+    <button class="btn btn-primary" style="margin-bottom: 10px;" (click)="onSearchClicked()">Search</button>
+</div>
+<p *ngIf = "isSearching">Searching...</p>
+<div class="alert alert-danger" *ngIf="error">
+    <h1>An Error occured!</h1>
+    <p>{{error}}</p>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <a href="#" class="list-group-item clearfix" *ngFor="let repo of repositoriesLst">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading" 
+                style="color: rgb(12, 11, 10); background-color: yellow; text-decoration: underline; font-weight: bold;">
+                    Repository Name:</h4>
+                <h3 style="color: rgb(226, 64, 99);">{{repo.name}}</h3>
+            </div>
+            <span class="pull-right">
+                <img 
+                src="{{ repo.owner.avatar_url }}" 
+                alt="{{repo.name}}" 
+                class="img-responsive" 
+                style="max-height: 100px;">
+                <button class="btn -btn-success" style="margin-top: 2px; background-color: aqua;">Bookmark</button>
+            </span>
+        </a>
+    </div>
+</div>
